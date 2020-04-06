@@ -1,0 +1,57 @@
+.card {
+    background-color: #191c20;
+    color: #FFF !important;
+}
+.card-img-top {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.flag {
+
+    width: 45px !important;
+    height: 45px !important;
+}
+p.text-center.my-1 {
+    font-size: 11px;
+}
+.tn .badge  {
+    font-size: 18px;
+}
+
+
+.allsum span, .allsum b {
+  font-size: 12px;
+}
+
+
+  
+  .dropdown {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: -240%;
+    right: 0;
+    width: 100%;
+    background-color: #24272a;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    color: white;
+    .lastUpdate {
+        background-color: #191c20;
+        color: white;
+    }
+  }
+  
+  
+  
+//   .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+//   .dropdown:hover .dropbtn {background-color: #3e8e41;:}

@@ -1,0 +1,40 @@
+.navbar-brand {
+background-color: #000000a4;
+padding: 8px 28px;
+
+}
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-text {
+    font-size: 18px;
+}
+
+
+.wrapper {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #eee;
+	color: grey;
+	p {
+		font-size: 14px;
+	}
+}
+@media (max-width : 512px) {
+.navbar-brand {
+	
+	margin-left: 0;
+	width: 100% !important;
+}
+   .picsum-img-wrapper img {
+	  display: none;
+   }
+}
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
+}
+

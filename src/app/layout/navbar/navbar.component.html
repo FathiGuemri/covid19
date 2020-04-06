@@ -1,0 +1,35 @@
+<nav class="navbar p-0 bg-dark">
+  <div class="navbar-brand">
+    <img class="logo float-left mt-1" src="/assets/covid19.png" alt="">
+    <div class="text-center float-left text-white logo-text  mr-1">
+      <b class="">فيروس كورنا</b>
+      <b class="d-block">Covid-19</b>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+ 
+ <ngb-carousel *ngIf="images" >
+  <ng-template ngbSlide *ngFor="let image of images">
+    <div class="picsum-img-wrapper">
+      <img style="width: 350px; height: 69px;" src="/assets/bg-1.jpg" alt="Random slide">
+    </div>
+    <div style="width: 350px; height: 69px;" class="carousel-caption pr-3">
+      <div class="wrapper">
+<p class=" py-1">
+        
+                  {{ image }}
+        
+                  <i class="fa fa-bullhorn fa-1x mr-2 text-dark" aria-hidden="true"></i>
+            </p>
+      </div>
+            
+      
+          
+      
+      
+    </div>
+  </ng-template>
+  
+</ngb-carousel>
+  
+</nav>

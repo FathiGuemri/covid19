@@ -1,0 +1,89 @@
+
+  <div class="container">
+
+    <div class="row py-2 ">
+      <div class="col col-3">
+        <b class="d-inline-block lastUpdate text-center h-100  px-2 py-1 rounded">
+          <div class="fa-globe fa"></div>
+          في العالم</b>
+      </div>
+      <div class="col col-3 py-2 text-right   summary">
+        حالات مأكد
+        <span class="badge badge-danger ml-2 mr-3">
+          {{ Summary?.confirmed?.value }}</span>
+      </div>
+      <div class="col col-3 py-2 text-right  summary ">
+        متعافى
+       <span class="badge badge-success ml-2 mr-3">
+            {{ Summary?.recovered?.value }}</span>
+      </div>
+      <div class="col col-3 py-2 text-right  summary ">
+        ويفايات
+        <span class="badge badge-dark ml-2 mr-3">
+          {{ Summary?.deaths?.value }}</span>
+      </div>
+    </div>
+    <div class="row border-top ">
+
+      
+      <div class="col col-md-6">
+        <input placeholder="البحث" class="form-control search-table border-lfet border-right" type="text"  [(ngModel)]="term"  name="term"  />
+      </div>
+      <div class="col col-md-6 ">
+        <div class="rounded lastUpdate lastUpdatetable ">
+          <p class="text-center my-1 py-1 ">
+            اخر التحديث
+            {{ countries[0].lastUpdate | date: "medium" }}
+          </p>
+         
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+<table dir="rtl" class="fixed_header table mb-0">
+  <thead class="border-bottom-0">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">دولة</th>
+      <th scope="col">حالات مأكد</th>
+      <th scope="col">متعافى</th>
+      <th scope="col">ويفايات</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+    <ng-container
+    *ngFor="
+      let country of countries | filter: term | orderBy: order:true:true;
+      index as i
+    "
+  >
+    <tr class="text-right">
+      <th >{{ i + 1 }}</th>
+          <td>
+            <img
+              src="http://www.geognos.com/api/en/countries/flag/{{
+                country.code
+              }}.png"
+              class="mr-2"
+              style="width: 20px;"
+            />
+            <b>{{country.name}}</b>
+          </td>
+          <td >
+            <span class="badge badge-danger">
+
+              {{country.confirmed}}
+            </span>
+          </td>
+          <td ><span class="badge badge-success">{{country.recovered}}</span></td>
+          <td ><span class="badge badge-dark">{{country.deaths}}</span></td>
+          
+    </tr>
+</ng-container>
+  </tbody>
+</table>
+
+
