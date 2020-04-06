@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+@import '~bootstrap/dist/css/bootstrap.css';
+
+
+@import './style.rtl.css';
+
+body {
+    background-color: #2e2f32;
+}
+.fwd-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.lastUpdate {
+    background-color: #24272a;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #2d3135;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #999;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FFF;
+  }
+
+  .loader-container {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      background: #2e2f32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      margin: 0;
+  
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #999; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+ .carousel-indicators,
+ .carousel-control-prev,
+ .carousel-control-next {
+   display: none !important;
+ }
+ 
+
+ .carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 18px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  background-color: #000000a4;
+  text-align: center;
+
+}

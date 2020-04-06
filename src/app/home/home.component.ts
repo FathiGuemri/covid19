@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { CoronaService } from "../srevises/corona.service";
 import { CountryFlagService } from "../srevises/country-flag.service";
 import { Observable } from "rxjs";
-import { Corona } from "../corona";
 
 @Component({
   selector: "app-home",
@@ -26,6 +24,7 @@ export class HomeComponent implements OnInit {
       this.dataTn = data[0];
     });
     this.coronaSrervis.getArab().subscribe(data => {
+ 
       
       
       this.slide = data});

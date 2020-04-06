@@ -52,10 +52,13 @@ tbody tr:nth-child(3) {
 
 .fixed_header th, .fixed_header td {
   padding: 8px;
-  text-align: right;
+  text-align: right ;
   width: 200px;
+  border: none !important;
 }
-
+.index-table {
+  width: 30px !important;
+}
 
 @media (max-width : 512px) {
     .fixed_header th, .fixed_header td {
@@ -63,5 +66,11 @@ tbody tr:nth-child(3) {
         font-size: 12px;
         text-align: right;
         width: 200px;
+      }
+      .text-right, .sm-center {
+        text-align: center !important;
+      }
+      .fa-globe {
+        display: none !important;
       }
 }

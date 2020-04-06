@@ -4,6 +4,7 @@ import { of } from "rxjs";
 
 import { CountryFlagService } from "./country-flag.service";
 
+import {country} from './ar.country'
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class CoronaService {
   getAll() {
    
 
-    countryList.forEach( (ele, index, object) => {
+    country.forEach( (ele, index, object) => {
      this.getAllIOS(ele.code).subscribe((data: any) => {
         
         ele.lastUpdate = data?.lastUpdate;
@@ -34,7 +35,7 @@ export class CoronaService {
 
    
   
-    return of(countryList)
+    return of(country)
   }
 
   getAllIOS(iso) {
@@ -51,13 +52,14 @@ export class CoronaService {
 
   getArab() {
     let arabicCountry = [
-      { en: "Mauritania", ar: "موريتانيا", data: {}, flag: ''},
+     
+		{ en: "Algeria", ar: "الجزائر", data: {}, flag: "" },
+		{ en: "Morocco", ar: "المغرب", data: {}, flag: "" },
+		{ en: "Libya", ar: "ليبيا", data: {}, flag: "" },
+		{ en: "Egypt", ar: "مصر", data: {}, flag: "" },
+		{ en: "Qatar", ar: "قطر", data: {}, flag: "" },
+		{ en: "Kuwait", ar: "الكويت", data: {}, flag: "" },
       { en: "Saudi Arabia", ar: "السعودية", data: {}, flag: ''},
-      { en: "Algeria", ar: "الجزائر", data: {}, flag: "" },
-      { en: "Egypt", ar: "مصر", data: {}, flag: "" },
-      { en: "Libya", ar: "ليبيا", data: {}, flag: "" },
-      { en: "Morocco", ar: "المغرب", data: {}, flag: "" },
-      { en: "Qatar", ar: "قطر", data: {}, flag: "" },
       { en: "Iraq", ar: "العراق", data: {}, flag: "" },
     ];
 

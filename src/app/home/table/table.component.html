@@ -44,10 +44,11 @@
 
 <table dir="rtl" class="fixed_header table mb-0">
   <thead class="border-bottom-0">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">دولة</th>
-      <th scope="col">حالات مأكد</th>
+    <tr class="border-bottom border-top">
+      <th scope="col" class="index-table">الترتيب</th>
+      <th scope="col" class="index-table invisible" >***</th>
+      <th scope="col" class="sm-center">الدولة</th>
+      <th scope="col" class="">حالات مأكد</th>
       <th scope="col">متعافى</th>
       <th scope="col">ويفايات</th>
     </tr>
@@ -60,18 +61,21 @@
       index as i
     "
   >
-    <tr class="text-right">
-      <th >{{ i + 1 }}</th>
-          <td>
-            <img
-              src="http://www.geognos.com/api/en/countries/flag/{{
-                country.code
-              }}.png"
-              class="mr-2"
-              style="width: 20px;"
-            />
-            <b>{{country.name}}</b>
-          </td>
+    <tr class="text-right text-white border-bottom">
+      <th class="index-table">{{ i + 1 }}</th>
+        <td class="index-table">
+
+       
+      <img
+        src="http://www.geognos.com/api/en/countries/flag/{{
+          country.code
+        }}.png"
+        class="mr-2"
+        style="width: 25px;"
+          /></td>
+      <td>
+            <span class="text-white">{{country.name}}</span>
+        </td>
           <td >
             <span class="badge badge-danger">
 
