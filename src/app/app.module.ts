@@ -15,6 +15,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { TableComponent } from './home/table/table.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FooterComponent } from './layout/footer/footer.component';
     NgbModule,
     Ng2SearchPipeModule,
     OrderModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   
   providers: [],

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PwaService } from './sevises/pwa.service';
+import { NgUpdatesService } from './services/ng-updates.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'covid';
+  constructor (private pwa: NgUpdatesService) {
+  }
 }
