@@ -9,32 +9,24 @@ import { interval, concat } from 'rxjs';
 export class NgUpdatesService {
 
   constructor(
-    private updates: SwUpdate,
-    appRef: ApplicationRef
+    private swUpdate: SwUpdate,
   ) {
-    updates.available.subscribe(event => {
-      console.log('current version is', event.current);
-      console.log('available version is', event.available);
-    });
-    updates.activated.subscribe(event => {
-      console.log('old version was', event.previous);
-      console.log('new version is', event.current);
-    });
-       // Allow the app to stabilize first, before starting polling for updates with `interval()`.
-       const appIsStable$ = appRef.isStable.pipe(first(isStable => isStable === true));
-       const everySixHours$ = interval(6 * 60 * 60 * 1000);
-       const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
    
-       everySixHoursOnceAppIsStable$.subscribe(() => updates.checkForUpdate());
      }
    
 
 
   checkUpdate(): void {
-    this.updates.available.subscribe(event => {
-      if (confirm('PWD updates')) {
-        this.updates.activateUpdate().then( () => document.location.reload())
-      }
-    })
+    
+    if (this.swUpdate.isEnabled) {
+
+      this.swUpdate.available.subscribe(() => {
+
+          if(confirm("يتوفر إصدار جديد. تحميل نسخة جديدة")) {
+
+              window.location.reload();
+          }
+      });
+  }    
   }
 }

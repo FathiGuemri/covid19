@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PwaService } from './sevises/pwa.service';
 import { NgUpdatesService } from './services/ng-updates.service';
 
@@ -7,9 +7,13 @@ import { NgUpdatesService } from './services/ng-updates.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'covid';
   constructor (private pwa: NgUpdatesService) {
-    pwa.checkUpdate()
+  }
+  
+  ngOnInit() {
+    this.pwa.checkUpdate()
+
   }
 }
