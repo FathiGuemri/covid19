@@ -10,5 +10,6 @@ import { NgUpdatesService } from './services/ng-updates.service';
 export class AppComponent {
   title = 'covid';
   constructor (private pwa: NgUpdatesService) {
+    pwa.checkUpdate()
   }
 }

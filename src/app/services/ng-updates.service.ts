@@ -30,4 +30,11 @@ export class NgUpdatesService {
    
 
 
+  checkUpdate(): void {
+    this.updates.available.subscribe(event => {
+      if (confirm('PWD updates')) {
+        this.updates.activateUpdate().then( () => document.location.reload())
+      }
+    })
+  }
 }
