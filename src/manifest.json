@@ -6,8 +6,7 @@
     "display": "fullscreen",
     "scope": "./",
     "description": "الإحصاءات انتشار فيروس كورونا المستجد (كوفيد-19)",
-    "prefer_related_applications": false,
-    "start_url": "./",
+    "start_url": "https://covid-pwa.herokuapp.com/",
     "icons": [
       {
         "src": "/favicon.ico"
