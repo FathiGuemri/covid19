@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { CoronaService } from "../srevises/corona.service";
 import { CountryFlagService } from "../srevises/country-flag.service";
-import { Observable } from "rxjs";
+import { Observable, pipe } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { country } from "../srevises/ar.country";
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: "app-home",
@@ -9,20 +12,29 @@ import { Observable } from "rxjs";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  dataTn;
+  dataMyCountry;
   slide;
   Summary;
   countryAllData;
   constructor(
     private coronaSrervis: CoronaService,
-    private flagS: CountryFlagService
+    private flagS: CountryFlagService,
+    private http: HttpClient,
   ) {}
-
+load = true
   ngOnInit(): void {
-  
-    this.coronaSrervis.getByCountry("tunisia").subscribe((data: any[]) => {
-      this.dataTn = data[0];
-    });
+    this.http.get('https://ipinfo.io?token=0ac350cebb7af1').subscribe((res: any) => {
+     
+      this.coronaSrervis.getAllIOS(res.country).pipe(map((coun: any) => {
+        let arC = country.find(e => e.code == coun.countrydata[0]?.info.code)
+        
+        
+        this.dataMyCountry = arC
+      })).subscribe(null, null, () => {
+        this.load = false
+      });
+      
+    })
     this.coronaSrervis.getArab().subscribe(data => {
  
       

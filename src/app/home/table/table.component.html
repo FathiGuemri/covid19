@@ -32,8 +32,7 @@
       <div class="col col-md-6 ">
         <div class="rounded lastUpdate lastUpdatetable ">
           <p class="text-center my-1 py-1 ">
-            اخر التحديث
-            {{ countries[0].lastUpdate | date: "medium" }}
+          جميع الدول
           </p>
          
         </div>
@@ -48,9 +47,24 @@
       <th scope="col" class="index-table">الترتيب</th>
       <th scope="col" class="index-table invisible" >***</th>
       <th scope="col" class="sm-center">الدولة</th>
-      <th scope="col" class="">حالات مؤكد</th>
-      <th scope="col">متعافى</th>
-      <th scope="col">وفيات</th>
+      <th scope="col" class="text-center">
+        <tr><td> حالات مؤكد</td></tr>
+       <tr>
+         <td>الكل</td>
+         <td>اليوم</td>
+       </tr>
+      </th>
+      <th scope="col" class="text-center">
+        متعافى
+      </th>
+      <th scope="col" class="text-center">
+        <tr><td>وفيات</td></tr>
+       <tr>
+         <td>الكل</td>
+         <td>اليوم</td>
+       </tr>
+      </th>
+      <th class="index-table invisible">***</th>
     </tr>
   </thead>
   <tbody>
@@ -61,15 +75,18 @@
       index as i
     "
   >
-    <tr class="text-right text-white border-bottom">
-      <th class="index-table">{{ i + 1 }}</th>
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel  >
+      <ng-template ngbPanelTitle *ngIf="country.total_cases !== 0">
+  <tr class="text-right text-white border-bottom  ">
+    
+      <th class="index-table">
+        {{ i + 1 }}</th>
         <td class="index-table">
 
        
       <img
-        src="https://www.countryflags.io/{{
-          country.code
-        }}/shiny/64.png"
+        src="https://www.countryflags.io/{{ country.code }}/shiny/64.png"
         class="mr-2"
         style="width: 25px;"
           /></td>
@@ -77,15 +94,58 @@
             <span class="text-white">{{country.name}}</span>
         </td>
           <td >
-            <span class="badge badge-danger">
-
-              {{country.confirmed}}
-            </span>
+            <tr>
+              <td>
+                 <span class="badge badge-danger"> {{country.total_cases}}  </span>
+            </td>
+              <td>{{country.total_new_cases_today}}+</td>
+            </tr>
+           
           </td>
-          <td ><span class="badge badge-success">{{country.recovered}}</span></td>
-          <td ><span class="badge badge-dark">{{country.deaths}}</span></td>
+          <td class="py-2">
+            <span class="badge badge-success">{{country.total_recovered}}</span>       
+
+          </td>
+          <td class="deaths">
+            <tr>
+              <td>
+
+                <span class="badge badge-dark">{{country.total_deaths}}</span>       
+              </td>
+              <td>
+                {{country.total_new_deaths_today}}+
+              </td>
+            </tr>
+          </td>
+          <i class="fa p-2  fa-angle-double-down"></i>
+        </tr>
+      </ng-template>
+              <ng-template ngbPanelContent>
+                <div class="container">
+                  <div class="row">
+                    <div class="col col-6 text-white">
+                      <p><span> الحالات النشطة </span> : <span>
+                        {{ country.total_serious_cases }}
+                      </span></p>  
+                      <p><span>  يتعافى ثم اصيبت</span> : <span>
+                        {{ country.total_unresolved }}
+                      </span></p>  
+                      
+                    </div>
+                    <div class="col col-6 text-white">
+                      <p><span> الحالات مستقر </span> : <span>
+                        {{ country.total_active_cases - country.total_serious_cases }}
+                      </span></p>
+                          <p><span> الحالات الخطيرة </span> : <span>
+                              {{ country.total_serious_cases }}
+                            </span></p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
           
-    </tr>
 </ng-container>
   </tbody>
 </table>

@@ -88,3 +88,26 @@ body {
   text-align: center;
 
 }
+ngb-accordion {
+
+  button.btn.btn-link.collapsed {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    text-decoration: none !important;
+  }
+  .card {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background-color: #191c20 !important;
+  }
+  .card-header {
+    padding: 0 !important;
+    margin:  0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}

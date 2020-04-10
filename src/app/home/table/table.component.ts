@@ -17,11 +17,14 @@ export class TableComponent implements OnInit {
   term;
   countries;
   Summary
-order = 'confirmed'
+order = 'total_cases'
   constructor( private CS: CoronaService) {}
   ngOnInit(): void {
-    this.CS.getAll().subscribe(el => {
-     this.countries = el 
+    this.CS.getAll().subscribe((el) => {
+   
+      this. countries = el
+
+      
       
     })
     this.CS.getSummary().subscribe(data => {

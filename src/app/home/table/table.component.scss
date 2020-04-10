@@ -1,13 +1,13 @@
-tbody tr:first-child {
-  background-color: darkred !important;
+tbody tr.text-right.text-white.border-bottom:first-child {
+  background-color:  #24272a !important;
 }
 
-tbody tr:nth-child(2) {
-  background-color: rgb(153, 40, 40) !important;
-}
-tbody tr:nth-child(3) {
-  background-color: rgb(153, 70, 70) !important;
-}
+// tbody .text-right.text-white.border-bottom:nth-child(2) {
+//   background-color: rgb(153, 40, 40) !important;
+// }
+// tbody .text-right.text-white.border-bottom:nth-child(3) {
+//   background-color: rgb(153, 70, 70) !important;
+// }
 
 .lastUpdatetable {
   font-size: 11px;
@@ -38,7 +38,7 @@ tbody tr:nth-child(3) {
   display:block;
   width: 100%;
   overflow: auto;
-  height: 245px;
+  height: 300px;
 }
 
 .fixed_header thead tr {
@@ -51,10 +51,13 @@ tbody tr:nth-child(3) {
 }
 
 .fixed_header th, .fixed_header td {
-  padding: 8px;
-  text-align: right ;
+  padding: 4px;
+  text-align: center !important ;
   width: 200px;
   border: none !important;
+}
+.deaths {
+  text-align: left !important;
 }
 .index-table {
   width: 30px !important;
