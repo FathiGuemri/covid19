@@ -54,10 +54,10 @@
          <td>اليوم</td>
        </tr>
       </th>
-      <th scope="col" class="text-center">
+      <th *ngIf="mobileWidth" scope="col" class="text-center">
         متعافى
       </th>
-      <th scope="col" class="text-center">
+      <th *ngIf="mobileWidth" scope="col" class="text-center">
         <tr><td>وفيات</td></tr>
        <tr>
          <td>الكل</td>
@@ -102,11 +102,11 @@
             </tr>
            
           </td>
-          <td class="py-2">
+          <td class="py-2" *ngIf="mobileWidth">
             <span class="badge badge-success">{{country.total_recovered}}</span>       
 
           </td>
-          <td class="deaths">
+          <td class="deaths" *ngIf="mobileWidth"> 
             <tr>
               <td>
 
@@ -121,24 +121,71 @@
         </tr>
       </ng-template>
               <ng-template ngbPanelContent>
-                <div class="container">
-                  <div class="row">
-                    <div class="col col-6 text-white">
-                      <p><span> الحالات النشطة </span> : <span>
-                        {{ country.total_serious_cases }}
-                      </span></p>  
-                      <p><span>  يتعافى ثم اصيبت</span> : <span>
-                        {{ country.total_unresolved }}
-                      </span></p>  
-                      
+                <div class="container tbbody">
+                  <div class="row text-white">
+                    <div class="col-12 col" *ngIf="!mobileWidth">
+                      متعافى
+                      :
+                      <span class="badge badge-success"> {{country.total_recovered}}</span>     
+                    
                     </div>
-                    <div class="col col-6 text-white">
+                    
+                    <div class="col-12 col mt-2" *ngIf="!mobileWidth"> 
+                      وفيات
+                     :
+                          <span class="badge badge-dark"> {{country.total_deaths}} </span>       
+                       <span class="ml-3">
+                        اليوم
+                        :
+                        {{country.total_new_deaths_today}}+
+                       </span>
+                       
+                       
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col col-sm-6 col-12">
+                      <h5 class="text-info"><span>  معدل التعافي بنسبه مئويه</span> : <span>
+                        {{ country.percentrecovered }}% 
+                      </span></h5>
+
+                    </div>
+                    <div class="col col-sm-6 col-12">
+                      <h5  class="text-info"><span> معدل الوفات بنسبه مئويه</span> : <span>
+                        {{ country.percentdeaths }}% 
+                      </span></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    
+                    <div class="col col-sm-6 col-12 text-white">
+                      <p><span> الحالات النشطة </span> : <span>
+                        {{ country.total_active_cases }}
+                      </span></p>  
                       <p><span> الحالات مستقر </span> : <span>
                         {{ country.total_active_cases - country.total_serious_cases }}
                       </span></p>
                           <p><span> الحالات الخطيرة </span> : <span>
                               {{ country.total_serious_cases }}
                             </span></p>
+                            <p><span>  اجمالي التحليل </span> : <span>
+                              {{ country.tests }}
+                            </span></p>  
+                    </div>
+                    <div class="col col-sm-6 col-12 text-white">
+                    
+                      <p><span>الحالات  على كل مليون </span> : <span>
+                        {{ country.casesPerOneMillion }}
+                      </span></p>
+                      <p><span>الوفيات على كل مليون </span> : <span>
+                        {{ country.deathsPerOneMillion }}
+                      </span></p>  
+                      <p><span> التحليل على كل مليون </span> : <span>
+                        {{ country.testsPerOneMillion }}
+                      </span></p>  
+
+                        
+                      
                     </div>
                   </div>
                 </div>

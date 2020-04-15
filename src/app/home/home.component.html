@@ -1,180 +1,168 @@
-<main  class="container">
-
-    <div class="row ">
-      <div class="col col-12  col-lg-3 py-4">
-       <div class="card text-center text-white py-5" *ngIf="load">
-
-         <i  class="fa fa-map-marker animation fa-4x" aria-hidden="true"></i>
-        
-
-         <i  class="fa fa-map  fa-5x" aria-hidden="true"></i>
-       
-
-       </div>
-        
-        <div class="card w-100" *ngIf="!load">
-       
-                
-          
-          <div class="pt-3 px-3">
-            <h6 class=" float-left">
-              {{dataMyCountry?.name}}
-            </h6>
-            <img
-              src="https://www.countryflags.io/{{dataMyCountry?.code}}/shiny/64.png"
-              class="card-img-top float-right "
-              alt="..."
-            />
-            <div class="clearfix"></div>
-          </div>
-          <div class="card-body tn">
-            <div class="rounded lastUpdate mb-3 py-2">
-              <p class="text-center my-1">
-               اليوم 
-              </p>
-              <p class="text-center my-1">
-                حالات مؤكد 
-                :
-                <span class="badge badge-danger mr-2">
-
-                  {{dataMyCountry?.total_new_cases_today}}
-                </span>
-              </p>
-              <p class="text-center my-1">
-                وفيات
-                :
-                <span class="badge badge-dark mr-3">
-
-                  {{dataMyCountry?.total_new_deaths_today}}
-                </span>
-              </p>
-            </div>
-            <div class="my-2 ">
-              <h6 class="card-title float-left">حالات مؤكد</h6>
-              <h6 class="float-right badge badge-danger">
-                {{ dataMyCountry?.total_cases }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> متعافى</h6>
-              <h6 class="float-right badge badge-success">
-                {{ dataMyCountry?.total_recovered }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> وفيات </h6>
-              <h6 class="float-right badge badge-dark">
-                {{ dataMyCountry?.total_deaths }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> الحالات النشطة  </h6>
-              <h6 class="float-right badge badge-primary">
-                {{ dataMyCountry?.total_active_cases }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> يتعافى ثم اصيبت  </h6>
-              <h6 class="float-right badge badge-light">
-                {{ dataMyCountry?.total_unresolved }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> الحالات مستقر  </h6>
-              <h6 class="float-right badge badge-info">
-                {{ dataMyCountry?.total_active_cases -  dataMyCountry?.total_serious_cases  }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-            <div class="my-2">
-              <h6 class="card-title float-left"> الحالات الخطيرة  </h6>
-              <h6 class="float-right badge badge-secondary">
-                {{ dataMyCountry?.total_serious_cases }}
-              </h6>
-              <div class="clearfix"></div>
-            </div>
-         
-          </div>
-        </div>
-        <p>ads</p>
-        <!-- Begin Hsoub Ads Ad Place code -->
-<script type="text/javascript">
-  hsoub_adplace = 2001755051853354;
-  hsoub_adplace_size = '336x280';
-</script>
-<script src="http://ads2.hsoub.com/show.js" type="text/javascript"></script>
-<!-- End Hsoub Ads Ad Place code -->
-      </div>
-      <div class="col col-12  col-lg-9  ">
-        <div class="card w-100 mt-4 ">
-       
+<main class="mt-5">
+  <div class="container">
+    <div class="card text-center text-white py-5" *ngIf="load">
+      <i class="fa fa-map-marker animation fa-4x" aria-hidden="true"></i>
   
-              <app-table ></app-table>
+      <i class="fa fa-map fa-5x" aria-hidden="true"></i>
+    </div>
+  
+    <div class="card w-100" *ngIf="!load">
+      <div class="pt-3 px-3">
+        <h6 class="float-left">
+          {{ dataMyCountry?.name }}
+        </h6>
+        <span class="text-center">
+          اخر تحديث 
+          {{ dataMyCountry?.updated | date }}
+        </span>
+        <img
+          src="https://www.countryflags.io/{{ dataMyCountry?.code }}/shiny/64.png"
+          class="card-img-top float-right"
+          alt="..."
+        />
+        <div class="clearfix"></div>
+      </div>
+      <div class="card-body tn">
+        <div class="rounded lastUpdate mb-3 py-2">
+          <p class="text-center my-1">
+            اليوم
+          </p>
+          <p class="text-center my-1">
+            حالات مؤكد :
+            <span class="badge badge-danger mr-2">
+              {{ dataMyCountry?.total_new_cases_today }}
+            </span>
+          </p>
+          <p class="text-center my-1">
+            وفيات :
+            <span class="badge badge-dark mr-3">
+              {{ dataMyCountry?.total_new_deaths_today }}
+            </span>
+          </p>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">حالات مؤكد</h6>
+          <h6 class="float-right badge badge-danger">
+            {{ dataMyCountry?.total_cases }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">متعافى</h6>
+          <h6 class="float-right badge badge-success">
+            {{ dataMyCountry?.total_recovered }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">وفيات</h6>
+          <h6 class="float-right badge badge-dark">
+            {{ dataMyCountry?.total_deaths }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">الحالات النشطة</h6>
+          <h6 class="float-right badge badge-primary">
+            {{ dataMyCountry?.total_active_cases }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">يتعافى ثم اصيبت</h6>
+          <h6 class="float-right badge badge-light">
+            {{ dataMyCountry?.total_unresolved }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">الحالات مستقر</h6>
+          <h6 class="float-right badge badge-info">
+            {{
+              dataMyCountry?.total_active_cases -
+                dataMyCountry?.total_serious_cases
+            }}
+          </h6>
+          <div class="clearfix"></div>
+        </div>
+        <div class="my-2">
+          <h6 class="card-title float-left">الحالات الخطيرة</h6>
+          <h6 class="float-right badge badge-secondary">
+            {{ dataMyCountry?.total_serious_cases }}
+          </h6>
+          <div class="clearfix"></div>
         </div>
       </div>
     </div>
-    
-      <div class="row mt-4">
-        <div class=" col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let item of slide">
-          <div class="card dropdown">
-            <div class="card-body dropbtn row pb-1 ">
-              <div class="col-6 pb-0 pr-3">
-                <h6 class="">
-                  {{ item.ar }}
-                </h6>
-                <p class="badge badge-danger">
+  </div>
+  
+  
+
+  <div class="container">
+    <div class="card w-100 mt-4">
+      <app-table></app-table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let item of slide">
+        <div class="card dropdown">
+          <div class="card-body dropbtn row pb-1">
+            <div class="col-6 pb-0 pr-3">
+              <h6 class="">
+                {{ item.ar }}
+              </h6>
+              <p class="badge badge-danger">
+                {{ item.data.confirmed }}
+              </p>
+            </div>
+            <div class="col-6">
+              <img
+                [src]="item.flag"
+                class="float-right rounded-circle flag"
+                alt=""
+              />
+              <div class="clearfix"></div>
+            </div>
+            <div class="dropdown-content p-3">
+              <div>
+                <h6 class="card-title float-left">حالات مؤكد</h6>
+                <h6 class="float-right mr-3 badge badge-danger">
                   {{ item.data.confirmed }}
-                </p>
-              </div>
-              <div class="col-6">
-                <img
-                  [src]="item.flag"
-                  class="float-right rounded-circle  flag"
-                  alt=""
-                />
+                </h6>
                 <div class="clearfix"></div>
               </div>
-              <div class="dropdown-content p-3">
-                <div>
-                  <h6 class="card-title float-left">حالات مؤكد</h6>
-                  <h6 class="float-right mr-3 badge badge-danger">
-                    {{ item.data.confirmed }}
-                  </h6>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="my-2">
-                  <h6 class="card-title float-left"> متعافى</h6>
-                  <h6 class="float-right mr-3 badge badge-success">
-                    {{ item.data.recovered }}
-                  </h6>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="my-2">
-                  <h6 class="card-title float-left"> وفيات </h6>
-                  <h6 class="float-right mr-3 badge badge-dark">
-                    {{ item.data.deaths }}
-                  </h6>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="rounded lastUpdate mt-4 py-2">
-                  <p class="text-center my-1">
-                    اخر التحديث
-                  </p>
-                  <p class="text-center my-1">
-                    {{ item.data.lastUpdate | date: "medium" }}
-                  </p>
-                </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">متعافى</h6>
+                <h6 class="float-right mr-3 badge badge-success">
+                  {{ item.data.recovered }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">وفيات</h6>
+                <h6 class="float-right mr-3 badge badge-dark">
+                  {{ item.data.deaths }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="rounded lastUpdate mt-4 py-2">
+                <p class="text-center my-1">
+                  اخر التحديث
+                </p>
+                <p class="text-center my-1">
+                  {{ item.data.lastUpdate | date: "medium" }}
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="container px-5">
+    </div>
+  </div>
+
+  <!-- <div class="container px-5">
 
         <iframe src="https://andreasagap.github.io/Covid19-World/" style="width: 100%; height: 300px; overflow: hidden;" frameborder="0"></iframe>
       

@@ -35,7 +35,7 @@ tbody tr.text-right.text-white.border-bottom:first-child {
 }
 
 .fixed_header tbody{
-  display:block;
+  display: block;
   width: 100%;
   overflow: auto;
   height: 300px;
@@ -63,9 +63,21 @@ tbody tr.text-right.text-white.border-bottom:first-child {
   width: 30px !important;
 }
 
+.tbbody p, .tbbody h5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  
+    margin: 0 !important;
+}
+
 @media (max-width : 512px) {
+
+
+h6, p, span {
+  font-size: 12px !important;
+}
     .fixed_header th, .fixed_header td {
-        padding: 6px;
+        padding: 4px;
         font-size: 12px;
         text-align: right;
         width: 200px;

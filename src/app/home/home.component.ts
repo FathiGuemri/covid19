@@ -23,18 +23,25 @@ export class HomeComponent implements OnInit {
   ) {}
 load = true
   ngOnInit(): void {
-    this.http.get('https://ipinfo.io?token=0ac350cebb7af1').subscribe((res: any) => {
-     
-      this.coronaSrervis.getAllIOS(res.country).pipe(map((coun: any) => {
-        let arC = country.find(e => e.code == coun.countrydata[0]?.info.code)
-        
-        
-        this.dataMyCountry = arC
-      })).subscribe(null, null, () => {
-        this.load = false
-      });
+    
+    
+     new  Promise((rslv, rjct) => {
+
+      this.http.get('https://ipinfo.io?token=0ac350cebb7af1').subscribe((res: any) => {
       
-    })
+        
+        let arC = country.find(e => e.code === res.country)
+       rslv(arC)
+       
+        
+    }, err => {
+      rjct(err)
+      this.load = true
+    }, () => this.load = false)
+    }).then(data => this.dataMyCountry = data)
+
+  
+  
     this.coronaSrervis.getArab().subscribe(data => {
  
       

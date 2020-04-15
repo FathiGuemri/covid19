@@ -23,17 +23,23 @@ export class CoronaService {
 
     country.forEach( (ele, index, object) => {
      this.getAllIOS(ele.code).subscribe((data: any) => {
-        if (!data.hasOwnProperty("results")) {
-			ele.total_cases = data.countrydata[0].total_cases
-			ele.total_recovered = data.countrydata[0].total_recovered
-			ele.total_unresolved = data.countrydata[0].total_unresolved
-			ele.total_deaths = data.countrydata[0].total_deaths
-			ele.total_new_cases_today = data.countrydata[0].total_new_cases_today
-			ele.total_new_deaths_today = data.countrydata[0].total_new_deaths_today
-			ele.total_active_cases = data.countrydata[0].total_active_cases
-			ele.total_serious_cases = data.countrydata[0].total_serious_cases
-			ele.total_danger_rank = data.countrydata[0].total_danger_rank
-			ele.title = data.countrydata[0].info["title"]
+        if (!data.hasOwnProperty("message")) {
+			ele.total_cases = data.cases
+			ele.total_recovered = data.recovered
+			ele.total_deaths = data.deaths
+			ele.total_new_cases_today = data.todayCases
+			ele.total_new_deaths_today = data.todayDeaths
+			ele.total_active_cases = data.active
+			ele.total_serious_cases = data.critical
+			ele.updated = data.updated
+			ele.title = data.country
+			ele.casesPerOneMillion = data.casesPerOneMillion
+			ele.deathsPerOneMillion = data.deathsPerOneMillion
+			ele.title = data.country
+			ele.tests = data.tests
+      ele.testsPerOneMillion = data.testsPerOneMillion
+      ele.percentrecovered = (( data.recovered * 100) / data.cases).toFixed(2)
+      ele.percentdeaths =(( data.deaths * 100) / data.cases).toFixed(2)
 		}  
         
       });
@@ -47,7 +53,7 @@ export class CoronaService {
   getAllIOS(iso) {
     let coronaAllCounry: any[] = [];
     return this.http.get(
-      `https://api.thevirustracker.com/free-api?countryTotal=${iso}/`
+      `https://corona.lmao.ninja/v2/countries/${iso}/`
     );
   }
   getByCountry(coun) {
@@ -86,9 +92,3 @@ export class CoronaService {
     return of(arabicCountry);
   }
 }
-
-
-
-  
-
-  

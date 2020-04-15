@@ -18,9 +18,18 @@ export class TableComponent implements OnInit {
   countries;
   Summary
 order = 'total_cases'
-  constructor( private CS: CoronaService) {}
+mobileWidth: boolean =  true
+  constructor( private CS: CoronaService) {
+
+    if (window.innerWidth > 512) {
+      this.mobileWidth = true
+    } else {
+      this.mobileWidth = false
+    }
+  }
   ngOnInit(): void {
     this.CS.getAll().subscribe((el) => {
+  
    
       this. countries = el
 
