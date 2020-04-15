@@ -45,26 +45,26 @@
   <thead class="border-bottom-0">
     <tr class="border-bottom border-top">
       <th scope="col" class="index-table">الترتيب</th>
-      <th scope="col" class="index-table invisible" >***</th>
+      <th scope="col" class="index-table invisible" ></th>
       <th scope="col" class="sm-center">الدولة</th>
       <th scope="col" class="text-center">
-        <tr><td> حالات مؤكد</td></tr>
+        <tr><td class="p-0"> حالات مؤكد</td ></tr>
        <tr>
-         <td>الكل</td>
-         <td>اليوم</td>
+         <td class="p-0" >الكل</td>
+         <td class="p-0">اليوم</td>
        </tr>
       </th>
-      <th *ngIf="mobileWidth" scope="col" class="text-center">
+      <th scope="col" class="text-center xs-hidden">
         متعافى
       </th>
-      <th *ngIf="mobileWidth" scope="col" class="text-center">
-        <tr><td>وفيات</td></tr>
+      <th scope="col" class="text-center xs-hidden">
+        <tr><td class="p-0">وفيات</td></tr>
        <tr>
-         <td>الكل</td>
-         <td>اليوم</td>
+         <td class="p-0">الكل</td>
+         <td class="p-0">اليوم</td>
        </tr>
       </th>
-      <th class="index-table invisible">***</th>
+      <th class="index-table invisible"></th>
     </tr>
   </thead>
   <tbody>
@@ -82,7 +82,7 @@
     
       <th class="index-table">
         {{ i + 1 }}</th>
-        <td class="index-table">
+        <td class="index-table text-left">
 
        
       <img
@@ -95,42 +95,45 @@
         </td>
           <td >
             <tr>
-              <td>
+              <td class="p-0">
                  <span class="badge badge-danger"> {{country.total_cases}}  </span>
             </td>
-              <td>{{country.total_new_cases_today}}+</td>
+              <td class="p-0">{{country.total_new_cases_today}}+</td>
             </tr>
            
           </td>
-          <td class="py-2" *ngIf="mobileWidth">
+          <td class="py-2" class="xs-hidden">
             <span class="badge badge-success">{{country.total_recovered}}</span>       
 
           </td>
-          <td class="deaths" *ngIf="mobileWidth"> 
+          <td class="deaths" class="xs-hidden"> 
             <tr>
-              <td>
+              <td class="p-0">
 
                 <span class="badge badge-dark">{{country.total_deaths}}</span>       
               </td>
-              <td>
+              <td class="p-0">
                 {{country.total_new_deaths_today}}+
               </td>
             </tr>
           </td>
-          <i class="fa p-2  fa-angle-double-down"></i>
+          <td>
+
+            <i class="fa p-2  fa-angle-double-down"></i>
+          </td>
         </tr>
       </ng-template>
               <ng-template ngbPanelContent>
                 <div class="container tbbody">
                   <div class="row text-white">
-                    <div class="col-12 col" *ngIf="!mobileWidth">
+                    <div class="col-12 col xs-show" >
                       متعافى
                       :
                       <span class="badge badge-success"> {{country.total_recovered}}</span>     
                     
                     </div>
                     
-                    <div class="col-12 col mt-2" *ngIf="!mobileWidth"> 
+                    <div class="col-12 col mt-2 xs-show" > 
                       وفيات
                      :
                           <span class="badge badge-dark"> {{country.total_deaths}} </span>       

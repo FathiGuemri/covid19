@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoronaService } from 'src/app/srevises/corona.service';
-
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -21,13 +22,28 @@ export class NavbarComponent implements OnInit {
     ]
 
  
-  constructor(private coronaSrervis : CoronaService, ) { }
+  constructor(private coronaSrervis : CoronaService, @Inject(PLATFORM_ID) private platformId: Object ) { }
+ 
+  // get id() {
+  //     if (isPlatformBrowser(this.platformId)) {
+
+  //         return window.localStorage.getItem('id');
+  //     }
+
+  //     else {
+  //         return true
+  //     }
+  // }
   ngOnInit(): void {
     
   }
   
  
   reload() {
-    window.location.reload()
+    if (isPlatformBrowser(this.platformId)) {
+
+      location.reload()
+    }
   }
 }
+

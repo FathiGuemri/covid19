@@ -29,20 +29,21 @@ tbody tr.text-right.text-white.border-bottom:first-child {
     }
 }
 .fixed_header{
-    width: 100%;
+    width: 100% !important;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
 .fixed_header tbody{
   display: block;
-  width: 100%;
+  width: 100% !important;
   overflow: auto;
   height: 300px;
 }
 
-.fixed_header thead tr {
+.fixed_header thead tr, .fixed_header tbody tr {
    display: block;
+   width: 100% !important;
 }
 
 .fixed_header thead {
@@ -52,7 +53,7 @@ tbody tr.text-right.text-white.border-bottom:first-child {
 
 .fixed_header th, .fixed_header td {
   padding: 4px;
-  text-align: center !important ;
+  text-align: right !important ;
   width: 200px;
   border: none !important;
 }
@@ -60,7 +61,7 @@ tbody tr.text-right.text-white.border-bottom:first-child {
   text-align: left !important;
 }
 .index-table {
-  width: 30px !important;
+ text-align: right !important;
 }
 
 .tbbody p, .tbbody h5 {
@@ -69,8 +70,19 @@ tbody tr.text-right.text-white.border-bottom:first-child {
   
     margin: 0 !important;
 }
-
+.xs-show {
+  display: none;
+}
+.xs-hidden {
+  display: auto;
+}
 @media (max-width : 512px) {
+  .xs-show {
+    display: block;
+  }
+  .xs-hidden {
+    display: none;
+  }
 .summary {
 
   span.badge {
@@ -92,4 +104,5 @@ h6, p, span, th, td {
       .fa-globe {
         display: none !important;
       }
+
 }

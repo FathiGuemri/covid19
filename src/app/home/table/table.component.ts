@@ -1,6 +1,5 @@
-import { Component, PipeTransform, ViewChild, OnInit } from "@angular/core";
-import { DecimalPipe } from "@angular/common";
-import { FormControl } from "@angular/forms";
+import { Component, OnInit, PLATFORM_ID, Inject } from "@angular/core";
+import {  isPlatformBrowser } from "@angular/common";
 
 
 import { CoronaService } from "src/app/srevises/corona.service";
@@ -18,14 +17,13 @@ export class TableComponent implements OnInit {
   countries;
   Summary
 order = 'total_cases'
-mobileWidth: boolean =  true
-  constructor( private CS: CoronaService) {
+  constructor( private CS: CoronaService, @Inject(PLATFORM_ID) private platformId: Object ) {
 
-    if (window.innerWidth > 512) {
-      this.mobileWidth = true
-    } else {
-      this.mobileWidth = false
-    }
+
+   
+
+
+   
   }
   ngOnInit(): void {
     this.CS.getAll().subscribe((el) => {
