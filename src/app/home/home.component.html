@@ -2,101 +2,165 @@
   <div class="container">
     <div class="card text-center text-white py-5" *ngIf="load">
       <i class="fa fa-map-marker animation fa-4x" aria-hidden="true"></i>
-  
+
       <i class="fa fa-map fa-5x" aria-hidden="true"></i>
     </div>
-  
+
     <div class="card w-100" *ngIf="!load">
-      <div class="pt-3 px-3">
-        <h6 class="float-left">
-          {{ dataMyCountry?.name }}
-        </h6>
-        <span class="text-center">
-          اخر تحديث 
-          {{ dataMyCountry?.updated | date }}
-        </span>
-        <img
-          src="https://www.countryflags.io/{{ dataMyCountry?.code }}/shiny/64.png"
-          class="card-img-top float-right"
-          alt="..."
-        />
-        <div class="clearfix"></div>
-      </div>
-      <div class="card-body tn">
-        <div class="rounded lastUpdate mb-3 py-2">
-          <p class="text-center my-1">
-            اليوم
-          </p>
-          <p class="text-center my-1">
-            حالات مؤكد :
-            <span class="badge badge-danger mr-2">
-              {{ dataMyCountry?.total_new_cases_today }}
-            </span>
-          </p>
-          <p class="text-center my-1">
-            وفيات :
-            <span class="badge badge-dark mr-3">
-              {{ dataMyCountry?.total_new_deaths_today }}
-            </span>
-          </p>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">حالات مؤكد</h6>
-          <h6 class="float-right badge badge-danger">
-            {{ dataMyCountry?.total_cases }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">متعافى</h6>
-          <h6 class="float-right badge badge-success">
-            {{ dataMyCountry?.total_recovered }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">وفيات</h6>
-          <h6 class="float-right badge badge-dark">
-            {{ dataMyCountry?.total_deaths }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">الحالات النشطة</h6>
-          <h6 class="float-right badge badge-primary">
-            {{ dataMyCountry?.total_active_cases }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">يتعافى ثم اصيبت</h6>
-          <h6 class="float-right badge badge-light">
-            {{ dataMyCountry?.total_unresolved }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">الحالات مستقر</h6>
-          <h6 class="float-right badge badge-info">
-            {{
-              dataMyCountry?.total_active_cases -
-                dataMyCountry?.total_serious_cases
-            }}
-          </h6>
-          <div class="clearfix"></div>
-        </div>
-        <div class="my-2">
-          <h6 class="card-title float-left">الحالات الخطيرة</h6>
-          <h6 class="float-right badge badge-secondary">
-            {{ dataMyCountry?.total_serious_cases }}
-          </h6>
-          <div class="clearfix"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col col-md-4 col-12">
+            <div class="pt-3 px-3">
+              <h6 class="float-left">
+                {{ dataMyCountry?.name }}
+              </h6>
+
+              <img
+                src="https://www.countryflags.io/{{
+                  dataMyCountry?.code
+                }}/shiny/64.png"
+                class="card-img-top float-right"
+                [alt]="'falg ' + dataMyCountry?.name"
+              />
+              <div class="clearfix"></div>
+              <p>
+                <span class="float-left">
+                  في
+                </span>
+
+                <span class="float-right">
+                  {{ date | date }}
+                </span>
+                <span class="clearfix"></span>
+              </p>
+              <p>
+                <span class="float-left">
+                  اخر تحديث
+                </span>
+
+                <span class="float-right">
+                  {{ dataMyCountry?.updated | date: "longTime" }}
+                </span>
+                <span class="clearfix"></span>
+              </p>
+              <div class="my-2">
+                <h6 class="card-title float-left">اجمالي التحليل</h6>
+                <h6 class="float-right badge badge-light">
+                      {{ dataMyCountry?.tests }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <p>
+                <span class="float-left"> حالات مؤكد اليوم</span>
+                <span class="float-right badge badge-danger">
+                  {{ dataMyCountry?.total_new_cases_today }}
+                </span>
+                <span class="clearfix"></span>
+              </p>
+              <p>
+                <span class="float-left"> وفيات اليوم</span>
+                <span class="float-right badge badge-dark">
+                  {{ dataMyCountry?.total_new_deaths_today }}
+                </span>
+                <span class="clearfix"></span>
+              </p>
+              <p class="text-info">
+                <span class="float-left"> معدل التعافي بنسبه مئويه</span>
+                <span class="float-right ">
+                  {{ dataMyCountry?.percentrecovered }}%
+                </span>
+                <span class="clearfix"></span>
+              </p>
+
+              <p class="text-info">
+                <span class="float-left"> معدل الوفات بنسبه مئويه</span>
+                <span class="float-right">
+                  {{ dataMyCountry?.percentdeaths }}%
+                </span>
+                <span class="clearfix"></span>
+              </p>
+           
+            </div>
+          </div>
+          <div class="col col-md-8 col-12">
+            <div class="card-body tn">
+              <div class="my-2">
+                <h3 class="card-title float-left">حالات مؤكد</h3>
+                <h3 class="float-right badge badge-danger">
+                  {{ dataMyCountry?.total_cases }}
+                </h3>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h4 class="card-title float-left">متعافى</h4>
+                <h4 class="float-right badge badge-success">
+                  {{ dataMyCountry?.total_recovered }}
+                </h4>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h5 class="card-title float-left">وفيات</h5>
+                <h5 class="float-right badge badge-dark">
+                  {{ dataMyCountry?.total_deaths }}
+                </h5>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">الحالات النشطة</h6>
+                <h6 class="float-right badge badge-primary">
+                  {{ dataMyCountry?.total_active_cases }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="my-2">
+                <h6 class="card-title float-left">الحالات مستقر</h6>
+                <h6 class="float-right badge badge-info">
+                  {{
+                    dataMyCountry?.total_active_cases -
+                      dataMyCountry?.total_serious_cases
+                  }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">الحالات الخطيرة</h6>
+                <h6 class="float-right badge badge-secondary">
+                  {{ dataMyCountry?.total_serious_cases }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">الحالات  على كل مليون</h6>
+                <h6 class="float-right badge badge-light">
+                  {{ dataMyCountry?.casesPerOneMillion }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">الوفيات على كل مليون </h6>
+                <h6 class="float-right badge badge-light">
+                  {{ dataMyCountry?.deathsPerOneMillion }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              <div class="my-2">
+                <h6 class="card-title float-left">التحليل على كل مليون </h6>
+                <h6 class="float-right badge badge-light">
+                  {{ dataMyCountry?.deathsPerOneMillion }}
+                </h6>
+                <div class="clearfix"></div>
+              </div>
+              
+              
+                 
+                    
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
 
   <div class="container">
     <div class="card w-100 mt-4">

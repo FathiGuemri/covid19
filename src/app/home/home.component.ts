@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   slide;
   Summary;
   countryAllData;
+  date = new Date()
   constructor(
     private coronaSrervis: CoronaService,
     private flagS: CountryFlagService,
@@ -30,15 +31,19 @@ load = true
       this.http.get('https://ipinfo.io?token=0ac350cebb7af1').subscribe((res: any) => {
       
         
-        let arC = country.find(e => e.code === res.country)
+      let arC = country.find(e => e.code === res.country)
        rslv(arC)
        
         
     }, err => {
       rjct(err)
       this.load = true
-    }, () => this.load = false)
-    }).then(data => this.dataMyCountry = data)
+    })
+    }).then(data => {
+      // this.load = false
+      this.dataMyCountry = data}).catch(null).finally(() => {
+        this.load = false
+      })
 
   
   

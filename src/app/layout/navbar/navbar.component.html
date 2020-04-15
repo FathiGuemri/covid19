@@ -7,7 +7,9 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <button class="add-button">Add to home screen</button>
+  <button class="btn btn-outline-light btn-sm" (click)="reload()">
+    <i class="fa-refresh fa ml-2"></i>
+    تحديث البيانات</button>
  <ngb-carousel *ngIf="images" >
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">

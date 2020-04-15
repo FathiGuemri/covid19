@@ -71,9 +71,13 @@ tbody tr.text-right.text-white.border-bottom:first-child {
 }
 
 @media (max-width : 512px) {
+.summary {
 
-
-h6, p, span {
+  span.badge {
+    font-size: 9px !important;
+}
+}
+h6, p, span, th, td {
   font-size: 12px !important;
 }
     .fixed_header th, .fixed_header td {

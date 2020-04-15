@@ -1,13 +1,14 @@
 .card {
     background-color: #191c20;
     color: #FFF !important;
-    h4 {
-      font-size: 15px;
-    }
+  
 }
 .card-img-top {
     width: 60px !important;
     height: 60px !important;
+}
+h3.badge, h4.badge , h5.badge{
+  font-size: inherit;
 }
 
 .flag {
@@ -16,7 +17,7 @@
 }
 p.text-center.my-1 {
     font-size: 11px;
-}
+}s
 
 
 
