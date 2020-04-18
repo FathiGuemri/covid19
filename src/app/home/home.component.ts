@@ -17,12 +17,16 @@ export class HomeComponent implements OnInit {
   Summary;
   countryAllData;
   date = new Date()
+  load
   constructor(
     private coronaSrervis: CoronaService,
     private flagS: CountryFlagService,
     private http: HttpClient,
-  ) {}
-load = true
+  ) {
+    
+    this.load = true
+    }
+
   ngOnInit(): void {
     
     
@@ -40,7 +44,7 @@ load = true
       this.load = true
     })
     }).then(data => {
-      // this.load = false
+      this.load = false
       this.dataMyCountry = data}).catch(null).finally(() => {
         this.load = false
       })
