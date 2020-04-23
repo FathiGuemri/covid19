@@ -53,7 +53,7 @@ export class CoronaService {
   getAllIOS(iso) {
     let coronaAllCounry: any[] = [];
     return this.http.get(
-      `https://corona.lmao.ninja/v2/countries/${iso}?yesterday=false`, {header: {"accept: application/json"}}
+      `https://corona.lmao.ninja/v2/countries/${iso}?yesterday=false`, {headers: {"accept: application/json"}}
     );
   }
   getByCountry(coun) {
